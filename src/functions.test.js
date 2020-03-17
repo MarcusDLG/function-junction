@@ -13,7 +13,13 @@
 // }
 
 const max = (a, b) => {
-  return Math.max(a, b)
+  if (isNaN(a)) {
+    return b
+  } else if (isNaN(b)) {
+    return a
+  } else {
+    return Math.max(a, b)
+  }
 }
 
 /**
@@ -22,14 +28,15 @@ const max = (a, b) => {
  */
 
 const maxOfThree = (a, b, c) => {
-  return Math.max(a, b, c)
-  //   if (a > b && a > c) {
-  //     return a
-  //   } else if (b > a && b > c) {
-  //     return b
-  //   } else if (c > a && c > b) {
-  //     return c
-  //   }
+  if (isNaN(a)) {
+    return Math.max(b, c)
+  } else if (isNaN(b)) {
+    return Math.max(a, c)
+  } else if (isNaN(c)) {
+    return Math.max(a, b)
+  } else {
+    return Math.max(a, b, c)
+  }
 }
 
 /*
@@ -226,7 +233,6 @@ test('findLongestWord()', t => {
 
 test('max() can handle non numbers', t => {
   ensureDefined(t, 'max')
-
   t.is(max('aaa', 0), 0)
   t.true(isNaN(max('aaa', 'bbb')))
 })

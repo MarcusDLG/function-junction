@@ -65,12 +65,13 @@ const sumOfArray = arr => {
  */
 
 const isVowel = str => {
-  str = str.toLowerCase()
-  if (str == 'a' || str == 'e' || str == 'i' || str == 'o' || str == 'u') {
-    return true
-  } else {
-    return false
-  }
+  return /[aeiouAEIOU]/.test(str)
+  //   str = str.toLowerCase()
+  //   if (str == 'a' || str == 'e' || str == 'i' || str == 'o' || str == 'u') {
+  //     return true
+  //   } else {
+  //     return false
+  //   }
 }
 
 /**
@@ -83,27 +84,31 @@ const isVowel = str => {
  */
 
 const rovarspraket = str => {
-  str = str.toLowerCase()
-  const arr = str.split('')
-  const rv = []
-  arr.forEach(char => {
-    if (
-      char !== 'a' &&
-      char !== 'e' &&
-      char !== 'i' &&
-      char !== 'o' &&
-      char !== 'u'
-    ) {
-      rv.push(`${char}o${char}`)
-    } else {
-      rv.push(char)
-    }
-  })
-  return rv
-    .toString()
-    .split(',')
+  return str
+    .split('')
+    .map(s => ('aeiou'.includes(s) ? s : `${s}o${s}`))
     .join('')
 }
+//   const arr = str.split('')
+//   const rv = []
+//   arr.forEach(char => {
+//     if (
+//       char !== 'a' &&
+//       char !== 'e' &&
+//       char !== 'i' &&
+//       char !== 'o' &&
+//       char !== 'u'
+//     ) {
+//       rv.push(`${char}o${char}`)
+//     } else {
+//       rv.push(char)
+//     }
+//   })
+//   return rv
+//     .toString()
+//     .split(',')
+//     .join('')
+// }
 
 /**
  * 7) Define a function reverse() that computes
@@ -125,19 +130,6 @@ const reverse = s => {
  *
  * i.e. findLongestWord("book dogs") should return "book"
  */
-
-// const findLongestWord = str => {
-//   const array = str.split(' ' && ',')
-//   const longest = []
-//   array.forEach(element => {
-//     longest.push(element)
-
-//     if (element.length > array.length) {
-//       longest.splice(1, 1)
-//     }
-//   })
-//   return longest.toString()
-// }
 
 const findLongestWord = str => {
   const arr = str.split(' ')
